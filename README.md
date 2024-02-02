@@ -1,58 +1,83 @@
+# Task Management System
 
-# Waterdip AI Backend Assignment
+This Django-based task management system allows users to create, list, update, and delete tasks, with support for bulk adding and deleting. Each task has a title and a completion status.
 
-## Run Locally
+## Features
 
-Clone the project
+- **Create a new task**: Add tasks with a title and completion status.
+- **List all tasks**: View all tasks stored in the system.
+- **Get a specific task**: Retrieve details of a specific task.
+- **Delete a task**: Remove a task from the system.
+- **Edit a task**: Update the title and/or completion status of a task.
+- **Bulk add tasks**: Add multiple tasks in a single request.
+- **Bulk delete tasks**: Remove multiple tasks in a single request.
+
+## Installation
+
+### Prerequisites
+
+- Python 3.6 or higher
+- Django 3.0 or higher
+- Django REST Framework
+
+### Setting Up a Virtual Environment
+
+1. Clone the repository to your local machine.
+2. Navigate to the project directory and create a virtual environment:
+
+   ```bash
+   python -m venv venv
+   ```
+
+3. Activate the virtual environment:
+   - On Windows: `venv\Scripts\activate`
+   - On macOS/Linux: `source venv/bin/activate`
+
+### Installing Dependencies
+
+Install the required packages using pip:
 
 ```bash
-  git clone https://github.com/suraj-py/waterdip-ai-assignment.git
+pip install django djangorestframework
 ```
 
-Go to the project directory
+### Database Migrations
+
+Apply the database migrations to set up your database schema:
 
 ```bash
-  cd waterdip-ai-assignment
+python manage.py migrate
 ```
 
-Create virtual environment
+### Running the Server
+
+Start the Django development server:
 
 ```bash
-  pipenv shell
+python manage.py runserver
 ```
 
-If you don't have pipenv, install it using pip
+The API will be available at [http://localhost:8000/](http://localhost:8000/).
 
-```bash
-  pip3 install pipenv
-```
+## Usage
 
-Install dependencies, this will install all require packages from Pipefile.lock
+### Endpoints
 
-```bash
-  pipenv sync
-```
+- **List/Create Tasks**: `GET` and `POST` `/tasks/`
+- **Retrieve/Update/Delete Task**: `GET`, `PUT`, `PATCH`, and `DELETE` `/tasks/<int:pk>/`
+- **Bulk Add Tasks**: `POST` `/tasks/bulk_add/`
+- **Bulk Delete Tasks**: `DELETE` `/tasks/bulk_delete/`
 
-Start the server
+### Examples
 
-```bash
-  python manage.py runserver
-```
+- **Adding a New Task**:
 
-## Screenshots
+  ```bash
+  curl -X POST http://localhost:8000/tasks/ -H "Content-Type: application/json" -d '{"title": "New Task", "is_completed": false}'
+  ```
 
-- Now visit <http://127.0.0.1:8000/api/v1/tasks> to view all tasks.
+- **Bulk Deleting Tasks**:
 
-![](screenshots/1.png)
-
-- Now visit <http://127.0.0.1:8000/api/v1/tasks> to add new task.
-
-![](screenshots/2.png)
-
-- Now visit <http://127.0.0.1:8000/api/v1/tasks/{id}> to view single task.
-
-![](screenshots/3.png)
-
-- Now visit <http://127.0.0.1:8000/api/v1/tasks/{id}> to edit or delete single task.
-
-![](screenshots/4.png)
+  ```bash
+  curl -X DELETE http://localhost:8000/tasks/bulk_delete/ -H "Content-Type: application/json" -d '{"ids": [1,2,3]}'
+  ```
