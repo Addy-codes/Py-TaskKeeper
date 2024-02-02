@@ -66,7 +66,15 @@ The API will be available at [http://localhost:8000/](http://localhost:8000/).
 - **List/Create Tasks**: `GET` and `POST` `/tasks/`
 - **Retrieve/Update/Delete Task**: `GET`, `PUT`, `PATCH`, and `DELETE` `/tasks/<int:pk>/`
 - **Bulk Add Tasks**: `POST` `/tasks/bulk_add/`
+
+![image](https://github.com/Addy-codes/Py-TaskKeeper/assets/72205091/6f018ecf-c54c-4da6-9a8f-77fa9d3540cd)
+
+
 - **Bulk Delete Tasks**: `DELETE` `/tasks/bulk_delete/`
+
+![image](https://github.com/Addy-codes/Py-TaskKeeper/assets/72205091/928e74bf-bf62-464b-a4d9-099654a17b22)
+
+
 
 ### Examples
 
