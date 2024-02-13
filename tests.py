@@ -2,8 +2,7 @@ import requests
 import json
 
 def test_create_task():
-    r = requests.post('http://127.0.0.1:8000/api/v1/tasks/', json={"title": "Testing from test.py"})
-    print(r)
+    r = requests.post('http://localhost:5000/v1/tasks', json={"title": "My First Task"})
     assert isinstance(r.json()["id"], int)
     assert len(r.json()) == 1
 
@@ -31,5 +30,3 @@ def test_update_task():
 def test_delete_task():
     r = requests.delete('http://localhost:5000/v1/tasks/1')
     assert not r.content
-
-test_create_task()
